@@ -11,7 +11,7 @@ spec:
     spec:
       serviceAccountName: {{ .Values.serviceAccountName}}
       containers:
-      - image: "{{ .Values.image.repository}}:{{ .Chart.AppVersion }}"
+      - image: nginx
         name: nginx
         resources: {}
 status: {}
