@@ -51,11 +51,11 @@ pipeline {
 					
 					#Kubenetes config (for safety, in order to make sure it runs in the selected K8s context)
 					KUBE_CONTEXT="kissflow"
-					sh kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
-					sh kubectl config set-context $KUBE_CONTEXT
+					kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
+					kubectl config set-context $KUBE_CONTEXT
 					
 				        sh 'sed -i "s/<TAG>/$jenkins{BUILD_NUMBER}/" nginx.yaml'
-           				sh 'kubectl apply -f helm/templates/nginx.yaml'
+           				kubectl apply -f helm/templates/nginx.yaml
 					'''
 				}
 		}	
