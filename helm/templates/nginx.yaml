@@ -19,7 +19,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: kissflow.azurecr.io/kissflow:<TAG>
+      - image: nginx # kissflow.azurecr.io/kissflow:<TAG>
         name: nginx
         resources: {}
 status: {}
