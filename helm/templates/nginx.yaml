@@ -1,23 +1,44 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
   labels:
-    app: {{ .Release.Name}}
-  name: {{ .Release.Name}}
+    app: nginx
+  name: nginx
 spec:
-  replicas: {{ .Values.deploy.replicas}}
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
   strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: nginx
     spec:
       containers:
-      - image: nginx:1.21
+      - image: nginx
         name: nginx
         resources: {}
 status: {}
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: demo
+  name: demo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx
+  type: NodePort
+status:
+  loadBalancer: {}
