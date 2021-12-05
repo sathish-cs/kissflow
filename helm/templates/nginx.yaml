@@ -8,7 +8,7 @@ spec:
   replicas: {{ .Values.deploy.replicas}}
   selector:
     matchLabels:
-      app: nginx
+      app: {{ .Release.Name}}
   template:
     metadata:
       creationTimestamp: null
@@ -16,7 +16,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx
+      - image: nginx:1.21
         name: {{ .Release.Name}}
         resources: {}
 status: {}
