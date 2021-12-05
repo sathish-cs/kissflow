@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}-{{ .Chart.Name}}
+{{- template "app.systemlables" }}
+spec:
+  replicas: {{ .Values.deploy.replicas}}
+{{- template "myapp.systemlables" }}
+  strategy: {}
+{{- template "mypod.systemlables" }}
+    spec:
+      serviceAccountName: {{ .Values.serviceAccountName}}
+      containers:
+      - image: "{{ .Values.image.repository}}:{{ .Chart.AppVersion }}"
+        name: nginx
+        resources: {}
+status: {}
