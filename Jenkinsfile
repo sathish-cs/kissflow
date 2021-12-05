@@ -54,7 +54,7 @@ pipeline {
 					kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
 					kubectl config set-context $KUBE_CONTEXT
 					
-				        sed -i "s/<TAG>/$jenkins{BUILD_NUMBER}/" nginx.yaml
+				        sed -i "s/<TAG>/$jenkins{BUILD_NUMBER}/" helm/templates/nginx.yaml
            				kubectl apply -f helm/templates/nginx.yaml
 					'''
 				}
