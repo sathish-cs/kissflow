@@ -8,12 +8,12 @@ spec:
   replicas: {{ .Values.deploy.replicas}}
   selector:
     matchLabels:
-      app: {{ .Release.Name}}
+      app: nginx
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: {{ .Release.Name}}
+        app: nginx
     spec:
       containers:
       - image: nginx
