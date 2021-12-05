@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Release.Name}}-svc"
+{{- template "app.systemlables" }}
+spec:
+  ports:
+  - port: {{ .Values.service.port }}
+    protocol: TCP
+    targetPort: 80
+  selector:
+    env: dev
+    project: demo
+  type: {{ .Values.service.type }}
