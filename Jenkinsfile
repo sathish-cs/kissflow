@@ -46,7 +46,7 @@ pipeline {
 					ACR_LOGINSERVER="kissflow.azurecr.io"
 
           #HELM config
-					NAME="Nginx"
+					NAME="nginx"
 					HELM_CHART="./helm/"
 					
 					#Kubenetes config (for safety, in order to make sure it runs in the selected K8s context)
