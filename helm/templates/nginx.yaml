@@ -16,7 +16,11 @@ spec:
         app: nginx
     spec:
       containers:
+<<<<<<< HEAD
       - image: nginx:1.21
+=======
+      - image: nginx
+>>>>>>> 7923a9717fcd3494d345b979b799497f65a5e7f3
         name: nginx
         resources: {}
 status: {}
