@@ -1,14 +1,21 @@
-apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name}} #-{{ .Chart.Name}}
+  labels:
+    app: {{ .Release.Name}}
+  name: {{ .Release.Name}}
 spec:
   replicas: {{ .Values.deploy.replicas}}
-  strategy: {}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name}}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Release.Name}}
     spec:
-     # serviceAccountName: {{ .Values.serviceAccountName}}
       containers:
       - image: nginx
-        name: nginx
+        name: {{ .Release.Name}}
         resources: {}
 status: {}
