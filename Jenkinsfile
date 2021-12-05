@@ -45,21 +45,18 @@ pipeline {
 					REPO_NAME="kissflow"
 					ACR_LOGINSERVER="kissflow.azurecr.io"
 
-          #HELM config
+  
 					NAME="nginx"
-					HELM_CHART="./helm/"
+					#HELM_CHART="./helm/"
 					
 					#Kubenetes config (for safety, in order to make sure it runs in the selected K8s context)
 					KUBE_CONTEXT="kissflow"
-					kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
-					kubectl config set-context $KUBE_CONTEXT
+					sh kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
+					sh kubectl config set-context $KUBE_CONTEXT
 					
-					#Helm Deployment
-					helm --kube-context $KUBE_CONTEXT upgrade --install --force $NAME $HELM_CHART --set image.repository=$ACR_LOGINSERVER/$REPO_NAME --set image.tag=jenkins${BUILD_NUMBER} 
-					
-					#If credentials are required for pulling docker image, supply the credentials to AKS by running the following:
-					#kubectl create secret -n $NAME docker-registry regcred --docker-server=$ACR_LOGINSERVER --docker-username=$ACR_ID --docker-password=$ACR_PASSWORD --docker-email=myemail@contoso.com
-					'''
+				        sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" nginx.yaml'
+           				sh 'kubectl apply -f deploy.yaml'
+
 				}
 		}	
 	}
