@@ -56,7 +56,7 @@ pipeline {
 					
 				        sh 'sed -i "s/<TAG>/$jenkins{BUILD_NUMBER}/" nginx.yaml'
            				sh 'kubectl apply -f helm/templates/nginx.yaml'
-
+					'''
 				}
 		}	
 	}
