@@ -8,15 +8,15 @@ spec:
   replicas: {{ .Values.deploy.replicas}}
   selector:
     matchLabels:
-      app: {{ .Release.Name}}
+      app: nginx
+  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: nginx
     spec:
       containers:
-      - image: nginx:1.21
-        name: {{ .Release.Name}}
+      - image: nginx
+        name: nginx
         resources: {}
 status: {}
