@@ -8,6 +8,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    env: dev
-    project: demo
+    env: {{ .Release.Name}}
+    project: {{ .Release.Name}}
   type: {{ .Values.service.type }}
