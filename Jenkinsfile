@@ -55,7 +55,7 @@ pipeline {
 					sh kubectl config set-context $KUBE_CONTEXT
 					
 				        sh 'sed -i "s/<TAG>/$jenkins{BUILD_NUMBER}/" nginx.yaml'
-           				sh 'kubectl apply -f deploy.yaml'
+           				sh 'kubectl apply -f helm/templates/nginx.yaml'
 
 				}
 		}	
