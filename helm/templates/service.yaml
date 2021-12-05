@@ -12,6 +12,6 @@ spec:
     targetPort: 80
   selector:
     app: {{ .Release.Name}}
-  type: {{ .Values.service.type }}
+  type: NodePort
 status:
   loadBalancer: {}
