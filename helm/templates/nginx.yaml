@@ -21,7 +21,8 @@ spec:
       containers:
       - image: kissflow.azurecr.io/kissflow:jenkins<TAG>
         name: nginx
-        resources: {}
+      imagePullSecrets:
+      - name: kissflow
 status: {}
 
 ---
