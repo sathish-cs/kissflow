@@ -13,9 +13,9 @@ pipeline {
 		}
 		stage ('Build, Lint, & Unit Test') {
 			steps{
-					//exectute build, and test runner here    
+					//This section can be utilzed to do test application before release. 
 					sh '''
-					echo "exectute build, linter, and test runner here"
+					echo "exectute build, linter, and test runner here". 
 					'''
 			}
 	}
@@ -36,7 +36,7 @@ pipeline {
 					'''
 			}
 	}
-		stage ('Deploy to K8s'){
+		stage ('Deploy to K8s Cluster'){
 			steps{
 					sh '''
           #Docker Repo Config
