@@ -32,8 +32,6 @@ pipeline {
 					cd ./nginx
 					docker build -t $IMAGE_NAME .
 					cd ..
-					
-				
 					docker push $IMAGE_NAME
 					'''
 			}
@@ -51,7 +49,9 @@ pipeline {
 					kubectl config --kubeconfig=/var/lib/jenkins/.kube/config view
 					kubectl config set-context $KUBE_CONTEXT
 					
+					# Replacing tag with jenkins build number
 				        sed -i "s/<TAG>/${BUILD_NUMBER}/" nginx/nginx.yaml
+					# Apply manifests to create/update deployment
            				kubectl apply -f nginx/nginx.yaml
 					'''
 				}
