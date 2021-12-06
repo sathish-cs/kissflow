@@ -25,7 +25,7 @@
 `sudo systemctl start jenkins
 `
 
-#### Access jenkins <IP>:8080 & Install neccessary plugins
+#### Access jenkins IP:8080 & Install neccessary plugins
   
 #### Create AKS Cluster 
   
@@ -43,5 +43,5 @@
   
  #### Verify the nodes
   
- kubectl get nodes
+ `kubectl get nodes`
   
