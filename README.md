@@ -27,7 +27,9 @@
 
 #### Access jenkins IP:8080 & Install neccessary plugins
   
-#### Create AKS Cluster 
+#### Login az-cli and Create AKS Cluster 
+
+`az login`
   
 #### Create resource group
   
